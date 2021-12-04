@@ -1,13 +1,16 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
+
+$custom-typography: mat.define-typography-config(
+    $font-family: "Mulish",
+);
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.core();
+@include mat.core($custom-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -20,13 +23,15 @@ $code-climate-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$code-climate-theme: mat.define-light-theme((
-  color: (
-    primary: $code-climate-primary,
-    accent: $code-climate-accent,
-    warn: $code-climate-warn,
-  )
-));
+$code-climate-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $code-climate-primary,
+            accent: $code-climate-accent,
+            warn: $code-climate-warn,
+        ),
+    )
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,5 +40,49 @@ $code-climate-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+body {
+    margin: 0;
+}
+
+.mobile-only {
+    display: none !important;
+
+    @media screen and (max-width: 600px) {
+        display: inherit !important;
+    }
+}
+
+.desktop-only {
+    display: none !important;
+
+    @media screen and (min-width: 600px) {
+        display: inherit !important;
+        height: 48px;
+        align-items: center;
+    }
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #fff;
+}
+
+.mat-chip.mat-standard-chip {
+    background-color: #fff;
+    color: #000;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+    background: #fd7e14;
+    color: #fff;
+}
+
+.mat-form-field-flex {
+    background-color: #fff;
+    color: #000;
+    border-radius: 2px;
+}

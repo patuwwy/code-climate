@@ -1,9 +1,40 @@
 :host {
-    display: block;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
     flex-grow: 1;
 }
 
+.left-bar {
+    background: #f8f9fa;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    width: 148px;
+    z-index: 3;
+
+    text-align: center;
+    > * {
+        margin: 15px auto 8px;
+    }
+}
+
+.right-bar {
+    background: #f8f9fa;
+    position: absolute;
+    right: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 3;
+}
 google-map {
+    flex-grow: 1;
     height: 100%;
     width: 100%;
     display: block;
@@ -14,6 +45,7 @@ google-map {
     height: 100%;
     width: 100%;
     position: relative;
+    flex-grow: 1;
 }
 
 .control {

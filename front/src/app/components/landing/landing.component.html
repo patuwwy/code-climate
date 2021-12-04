@@ -1,13 +1,101 @@
-<section>
-    <h1><span>Zgłoś</span>nie zalewaj!</h1>
-    <p>Twoje zgłoszenie może mieć realny wpływ na bezpieczeństwo Twoje i innych mieszkańców Rzeszowa.</p>
-    <button mat-stroked-button color="primary">Primary</button>
-</section>
-<section>
-    <google-map [center]="smallMapOptions.center!" [height]="smallMapSize.height" [width]="smallMapSize.width"></google-map>
-
-    <button mat-stroked-button color="primary">Mapa zgłoszeń</button>
-</section>
-<section id="dlaczego">
-    <h1>Dlaczego warto</h1>
-</section>
+<div class="wrapper">
+    <section class="top">
+        <div class="content">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h1><span>Zgłoś</span><br />nie zlewaj!</h1>
+                    <p>
+                        Twoje zgłoszenie może mieć realny wpływ na bezpieczeństwo Twoje i innych mieszkańców Rzeszowa.
+                    </p>
+                </div>
+                <div class="col-12 col-md-6 submit-actions">
+                    <a class="submit-card flood" routerLink="/zgloszenie">Zgłoś zagrożenie wodne</a>
+                    <a class="submit-card smog" routerLink="/zgloszenie"> Zgłoś zanieczyszczenie powietrza </a>
+                    <button mat-stroked-button color="secondary">Inne zgłoszenie</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="map-link">
+        <h2>Sprawdź mapę zgłoszeń i zagrożeń</h2>
+        <p>by zobaczyć obecną sytuację w mieście</p>
+        <div class="content">
+            <div>
+                <google-map
+                    [center]="smallMapOptions.center!"
+                    [height]="smallMapSize.height"
+                    [width]="smallMapSize.width"
+                ></google-map>
+                <button mat-stroked-button color="primary"><a routerLink="/mapa">Zobacz mapę</a></button>
+            </div>
+        </div>
+    </section>
+    <section class="middle">
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8"><img src="../../../assets/domki.png" /></div>
+                    <div class="col-md-4">
+                        Możesz aktywnie uczestniczyć w kształtowaniu się modułu partycypacyjnego dzięki zgłaszaniu
+                        potencjalnych zagrożeń do miejskiego systemu w prosty i szybki sposób.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="create">
+        <div class="picto"></div>
+        <div></div>
+    </section>
+    <section id="korzysci" class="benefits">
+        <h2>Jakie ja mam korzyści?</h2>
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <mat-card>
+                            <img src="../../../assets/ppl.png" />
+                            <h3>Niesiesz pomoc</h3>
+                            <p>Twoje zgłoszenia mogą mieć realny wpływ na identyfikację zagrożeń</p>
+                        </mat-card>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <mat-card>
+                            <img src="../../../assets/phone.png" />
+                            <h3>Przyśpieszasz działanie</h3>
+                            <p>Ułatwisz szybsza i skuteczniejszą intwerwencję służbom miejskim</p>
+                        </mat-card>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <mat-card>
+                            <img src="../../../assets/cup.png" />
+                            <h3>Mieszkaniec na medal</h3>
+                            <p>Aktywny wpływ na kształtowanie się miasta i poczucie bezpieczeństwa</p>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="korzysci" class="benefits2">
+        <div class="content">
+            <div class="container">
+                <mat-card>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <img src="../../../assets/ppl-cup.png" />
+                        </div>
+                        <div class="col-12 col-md-6 benefits-description">
+                            <h3>Korzyści dla Ciebie</h3>
+                            <p>
+                                Zgłaszaj zagrożenia, mieszkańcy z największą ilością potwierdzonych zgłoszeń na mapie
+                                otrzymają pakiety darmowych przejazdów komunikacją miejską.
+                            </p>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+</div>

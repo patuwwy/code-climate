@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from "src/app/services/http.service";
 import { places } from "src/app/fake-data/places";
+import { installations } from "src/app/fake-data/airly-instalations";
+import { Ticket } from "src/app/services/ticket";
 
 const markerImages = {
     flood: {
@@ -28,6 +30,7 @@ export class MapComponent implements OnInit {
         clickableIcons: false,
         disableDefaultUI: true,
         fullscreenControl: false,
+        isFractionalZoomEnabled: true,
         restriction: {
             latLngBounds: new google.maps.LatLngBounds(
                 new google.maps.LatLng(49.5, 21.5), // top left corner of map
@@ -55,9 +58,9 @@ export class MapComponent implements OnInit {
     }
 
     onIdle($event: any) {
-        console.log("map idle");
-        this.places = places.map((place, i) => {
+        const notifies = places.map((place, i) => {
             const image = markerImages[place.type][place.confirmed ? "confirmed" : "unconfirmed"];
+
             return {
                 position: new google.maps.LatLng(place.lat, place.lng),
                 visible: true,
@@ -67,8 +70,29 @@ export class MapComponent implements OnInit {
                         url: image,
                     },
                 },
+                type: "notification",
             };
         });
+
+        const airlyInstallations = installations.map((installation, i) => {
+            return {
+                position: new google.maps.LatLng(installation.location.latitude, installation.location.longitude),
+                visible: true,
+                title: i.toString(),
+                options: {
+                    icon: {
+                        url: markerImages.smog.confirmed,
+                    },
+                },
+                type: "airly-installation",
+            };
+        });
+
+        const tickets = this.httpService.getTickets().subscribe((res) => {
+            this.places.concat(res);
+        });
+
+        this.places = notifies.concat(airlyInstallations);
     }
 
     onMarkerClick($event: any) {}

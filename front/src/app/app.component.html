@@ -1,10 +1,16 @@
-
-<mat-toolbar>
+<div>
+    <img src="../assets/aria.png" alt="Aria" />
+</div>
+<mat-toolbar class="mobile-only">
     <mat-toolbar-row>
-        <span>App</span>
+        <img src="../assets/logo.png" />
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-            (click)="toggleNav()">
+        <button
+            mat-icon-button
+            class="example-icon"
+            aria-label="Example icon-button with menu icon"
+            (click)="toggleNav()"
+        >
             <mat-icon>menu</mat-icon>
         </button>
     </mat-toolbar-row>
@@ -18,8 +24,20 @@
         <a routerLink="/#dlaczego">Dlaczego warto?</a>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="showFiller" (click)="toggleNav()">
-        Kontakt
+        <a routerLink="/#dlaczego">Kontakt</a>
     </mat-toolbar-row>
 </mat-toolbar>
+<nav class="desktop-only">
+    <div class="links">
+        <img src="../assets/logo.png" />
+        <a routerLink="/zgloszenie">Zgłoś zagrożenie</a>
+        <a routerLink="/mapa">Mapa zagrożeń</a>
+        <a routerLink="/" fragment="korzysci">Dlaczego warto?</a>
+        <a routerLink="/#kontakt">Kontakt</a>
+    </div>
+    <div class="login-local">
+        <button mat-stroked-button color="primary"><a routerLink="/mapa">Profil służb miejskich</a></button>
+    </div>
+</nav>
 
 <router-outlet></router-outlet>

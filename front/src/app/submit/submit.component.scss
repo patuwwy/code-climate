@@ -1,0 +1,71 @@
+:host {
+    background: linear-gradient(90deg, #0aa2c0 0%, #0dcaf0 100%);
+    color: #fff;
+}
+
+h1 {
+    padding-top: 32px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: -0.02em;
+}
+
+.tm {
+    margin-top: 32px;
+}
+
+input {
+    color: #000;
+}
+
+.agreements {
+    ul {
+        list-style: none;
+    }
+}
+
+.add-file {
+    line-height: 85px;
+    font-size: 16px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: #000;
+    text-align: center;
+}
+
+[type="submit"] {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 16px;
+
+    position: static;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    /* Light */
+
+    background: #f8f9fa;
+    border-radius: 4px;
+    color: #000;
+}
+
+.location {
+    position: relative;
+
+    img {
+        position: absolute;
+        top: 25px;
+        right: 5px;
+        width: 52px;
+        height: 29px;
+    }
+}

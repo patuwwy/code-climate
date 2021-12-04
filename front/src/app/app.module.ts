@@ -7,23 +7,23 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MapComponent } from "./components/map/map.component";
 import { GoogleMapsModule } from "@angular/google-maps";
 import { HttpClientModule } from "@angular/common/http";
-import { SubmitNotificationComponent } from "./components/submit-notification/submit-notification.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { LoginComponent } from "./components/login/login.component";
 import { LandingComponent } from "./components/landing/landing.component";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatCardModule } from "@angular/material/card";
 import { DescriptionComponent } from "./components/description/description.component";
+import { SubmitComponent } from "./submit/submit.component";
+import { MatSelectModule } from "@angular/material/select";
+import { MatChipsModule } from "@angular/material/chips";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 @NgModule({
-    declarations: [
-        AppComponent,
-        MapComponent,
-        SubmitNotificationComponent,
-        LoginComponent,
-        LandingComponent,
-        DescriptionComponent,
-    ],
+    declarations: [AppComponent, MapComponent, LoginComponent, LandingComponent, DescriptionComponent, SubmitComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -34,6 +34,13 @@ import { DescriptionComponent } from "./components/description/description.compo
         MatIconModule,
         MatButtonModule,
         MatSidenavModule,
+        MatCardModule,
+        MatSelectModule,
+        MatChipsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
