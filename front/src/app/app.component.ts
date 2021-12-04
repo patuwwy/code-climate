@@ -7,6 +7,11 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
     title = "code-climate";
+    showFiller = false;
 
     constructor() {}
+
+    toggleNav() {
+        this.showFiller = !this.showFiller;
+    }
 }

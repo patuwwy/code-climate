@@ -1,2 +1,25 @@
-<a routerLink="/m" class="btn btn-primary">Main</a>
+
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+            (click)="toggleNav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="showFiller" (click)="toggleNav()">
+        <a routerLink="/zgloszenie">Zgłoś zagrożenie</a>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="showFiller" (click)="toggleNav()">
+        <a routerLink="/mapa">Mapa zagrożeń</a>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="showFiller" (click)="toggleNav()">
+        <a routerLink="/#dlaczego">Dlaczego warto?</a>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="showFiller" (click)="toggleNav()">
+        Kontakt
+    </mat-toolbar-row>
+</mat-toolbar>
+
 <router-outlet></router-outlet>

@@ -1,0 +1,27 @@
+
+<div class="map-container">
+
+<google-map
+    [center]="options.center!"
+    [zoom]="options.zoom!"
+    [height]="size.height"
+    [width]="size.width"
+    [options]="options"
+    (idle)="onIdle($event)"
+    (mapClick)="onMapClick($event)">
+    <ng-component *ngFor="let place of places">
+        <map-marker
+            [position]="place.position"
+            [title]="place.title"
+            [label]="place.label"
+            [options]="place.options"
+            (click)="onMarkerClick(place)">
+        </map-marker>
+    </ng-component>
+</google-map>
+<img class="control time reset" src="../../../assets/map/icons/Vector.png" alt="">
+<img class="control filter water" src="../../../assets/map/icons/Vector.png" alt="">
+<img class="control filter smog" src="../../../assets/map/icons/Vector.png" alt="">
+<img class="control zoom-in" src="../../../assets/map/icons/+.png" alt="">
+<img class="control zoom-out" src="../../../assets/map/icons/+.png" alt="">
+</div>

@@ -1,0 +1,30 @@
+:host {
+    display: block;
+    flex-grow: 1;
+}
+
+google-map {
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+}
+
+.map-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.control {
+    position: absolute;
+    right: 15px;
+}
+
+.zoom-out {
+    bottom: 15px;
+}
+
+.zoom-in {
+    bottom: 65px;
+}
