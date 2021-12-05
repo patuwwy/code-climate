@@ -7,12 +7,12 @@ import { convertUpdateArguments } from "@angular/compiler/src/compiler_util/expr
 
 const markerImages = {
     water: {
-        confirmed: "../../../assets/map/icons/e6.png",
+        confirmed: "../../../assets/water-confirmed.png",
         unconfirmed: "../../../assets/map/icons/e7.png",
     },
     air: {
-        confirmed: "../../../assets/map/icons/p4.png",
-        unconfirmed: "../../../assets/map/icons/p5.png",
+        confirmed: "../../../assets/map/icons/p5.png",
+        unconfirmed: "../../../assets/map/icons/p4.png",
     },
 };
 
@@ -61,7 +61,7 @@ export class MapComponent implements OnInit {
             latLng: $event.latLng,
         };
 
-        console.log("map clicked", loc.latLng.lat(), loc.latLng.lng());
+        this.popupOpen = false;
     }
 
     onIdle($event: any) {
@@ -69,6 +69,8 @@ export class MapComponent implements OnInit {
     }
 
     update() {
+        this.places = [];
+
         const notifies = places
             .filter((p) => p.type === this.type || this.type === "all")
             .map((place, i) => {
@@ -85,9 +87,11 @@ export class MapComponent implements OnInit {
                     },
                     type: "notification",
                     description: place.description,
+                    confirmed: place.confirmed,
                 };
             });
 
+        /*
         const airlyInstallations = installations.map((installation, i) => {
             return {
                 position: new google.maps.LatLng(installation.location.latitude, installation.location.longitude),
@@ -101,18 +105,38 @@ export class MapComponent implements OnInit {
                 type: "airly-installation",
             };
         });
+        */
 
         const tickets = this.httpService.getTickets().subscribe((res) => {
+            console.log(res);
+
+            this.places = (res as any[]).map((ticket) => {
+                const image = (markerImages as any)[ticket.type][ticket.confirmed ? "confirmed" : "unconfirmed"];
+
+                return {
+                    position: new google.maps.LatLng(ticket.lat, ticket.long),
+                    visible: true,
+                    description: ticket.description,
+                    options: {
+                        icon: {
+                            url: image,
+                        },
+                    },
+                };
+            });
+
             this.places.concat(res);
+            console.log(this.places);
         });
 
-        this.places = notifies; //.concat(airlyInstallations);
+        //this.places = notifies; //.concat(airlyInstallations);
     }
 
     onMarkerClick(place: any) {
         console.log(place);
         this.options.zoom = 15;
         this.options.center = place.position;
+
         this.popupData = place;
         this.popupOpen = true;
     }

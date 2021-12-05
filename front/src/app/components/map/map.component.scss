@@ -85,10 +85,16 @@ google-map {
 
 .place-details {
     position: absolute;
+
+    @media screen and (min-width: 768px) {
+        margin-left: 180px;
+        margin-right: 180px;
+        font-size: 24px;
+    }
+
     bottom: 32px;
     left: 32px;
     right: 32px;
-    margin-left: 180px;
-    margin-right: 180px;
     background: #fff;
+    padding: 16px;
 }

@@ -10,8 +10,6 @@ import { Ticket } from "../../services/ticket";
 })
 export class SubmitComponent implements OnInit {
     tags = [
-        "Opad długotrwały",
-        "Opad nawalny",
         "Studzienka wybija",
         "Przepełniony zbiornik retencyjny",
         "Zalany budynek",
@@ -31,7 +29,7 @@ export class SubmitComponent implements OnInit {
         //email: new FormControl(""),
         phone: new FormControl("", Validators.required),
         location: new FormControl("50.0421369,22.0028409"),
-        desciption: new FormControl(""),
+        description: new FormControl(""),
     });
     agrees = [
         {

@@ -16,7 +16,7 @@
         <ng-component *ngFor="let place of places">
             <map-marker
                 [position]="place.position"
-                [title]="place.title"
+                [title]="place.descripton"
                 [label]="place.label"
                 [options]="place.options"
                 (click)="onMarkerClick(place)"
@@ -35,7 +35,9 @@
     <img class="control zoom-out" src="../../../assets/minus.png" alt="" />
     <div class="right-bar desktop-only"></div>
     <div class="place-details" *ngIf="popupOpen">
-        Adres: {{ popupData.position.lat() }}, {{ popupData.position.lng() }}<br />
-        {{ popupData.description }}
+        Lokalizacja: {{ popupData.position.lat() }}, {{ popupData.position.lng() }}<br />
+        Adres: ul. <br />
+        {{ popupData.description }} <br />
+        {{ popupData.confirmed ? "Potwierdzone" : "Niepotwierdzone" }}
     </div>
 </div>
