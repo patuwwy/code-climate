@@ -4,4 +4,5 @@
 
 ## Instalation
 
-[Click here](front/README.md)
+Backend server should be up and running.
+For Manual for frontend [Click here](front/README.md)
