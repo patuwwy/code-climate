@@ -8,7 +8,7 @@ import { Ticket } from "./ticket";
 export class HttpService {
     private url = "https://my-json-server.typicode.com/JSGund/XHR-Fetch-Request-JavaScript/posts";
     private apiBaseUrl = "http://3.141.30.121";
-    private airlyKey = "LKjOK7u3sSj99rU116G8y7foyFV0F7Iq";
+    private airlyKey = "INSERT_AIRLY_KEY_HERE";
 
     constructor(private http: HttpClient) {}
 
