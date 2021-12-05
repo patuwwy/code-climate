@@ -3,13 +3,14 @@ import { HttpService } from "src/app/services/http.service";
 import { places } from "src/app/fake-data/places";
 import { installations } from "src/app/fake-data/airly-instalations";
 import { Ticket } from "src/app/services/ticket";
+import { convertUpdateArguments } from "@angular/compiler/src/compiler_util/expression_converter";
 
 const markerImages = {
-    flood: {
+    water: {
         confirmed: "../../../assets/map/icons/e6.png",
         unconfirmed: "../../../assets/map/icons/e7.png",
     },
-    smog: {
+    air: {
         confirmed: "../../../assets/map/icons/p4.png",
         unconfirmed: "../../../assets/map/icons/p5.png",
     },
@@ -22,6 +23,12 @@ const markerImages = {
 })
 export class MapComponent implements OnInit {
     places: any = [];
+
+    filter: "confirmed" | "unconfirmed" | "all" = "confirmed";
+    type: "air" | "water" | "all" = "all";
+
+    popupData: any = {};
+    popupOpen = false;
 
     options: google.maps.MapOptions = {
         mapId: "3b3ec4791826c7a",
@@ -58,21 +65,28 @@ export class MapComponent implements OnInit {
     }
 
     onIdle($event: any) {
-        const notifies = places.map((place, i) => {
-            const image = markerImages[place.type][place.confirmed ? "confirmed" : "unconfirmed"];
+        this.update();
+    }
 
-            return {
-                position: new google.maps.LatLng(place.lat, place.lng),
-                visible: true,
-                title: i.toString(),
-                options: {
-                    icon: {
-                        url: image,
+    update() {
+        const notifies = places
+            .filter((p) => p.type === this.type || this.type === "all")
+            .map((place, i) => {
+                const image = markerImages[place.type][place.confirmed ? "confirmed" : "unconfirmed"];
+
+                return {
+                    position: new google.maps.LatLng(place.lat, place.lng),
+                    visible: true,
+                    title: i.toString(),
+                    options: {
+                        icon: {
+                            url: image,
+                        },
                     },
-                },
-                type: "notification",
-            };
-        });
+                    type: "notification",
+                    description: place.description,
+                };
+            });
 
         const airlyInstallations = installations.map((installation, i) => {
             return {
@@ -81,7 +95,7 @@ export class MapComponent implements OnInit {
                 title: i.toString(),
                 options: {
                     icon: {
-                        url: markerImages.smog.confirmed,
+                        url: markerImages.air.confirmed,
                     },
                 },
                 type: "airly-installation",
@@ -92,8 +106,26 @@ export class MapComponent implements OnInit {
             this.places.concat(res);
         });
 
-        this.places = notifies.concat(airlyInstallations);
+        this.places = notifies; //.concat(airlyInstallations);
     }
 
-    onMarkerClick($event: any) {}
+    onMarkerClick(place: any) {
+        console.log(place);
+        this.options.zoom = 15;
+        this.options.center = place.position;
+        this.popupData = place;
+        this.popupOpen = true;
+    }
+
+    setFilter(filter: this["filter"]) {
+        console.log("filter", filter);
+        this.filter = filter;
+        this.update();
+    }
+
+    setType(type: this["type"]) {
+        console.log("type", type);
+        this.type = type;
+        this.update();
+    }
 }

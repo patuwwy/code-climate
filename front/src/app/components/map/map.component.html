@@ -1,5 +1,5 @@
 <div class="map-container">
-    <div class="left-bar">
+    <div class="left-bar desktop-only">
         <img src="../../../assets/v1.png" /><br />Mapa zgłoszeń <img src="../../../assets/akar.png" /><br />Mapa
         zagrożeń
     </div>
@@ -20,14 +20,22 @@
                 [label]="place.label"
                 [options]="place.options"
                 (click)="onMarkerClick(place)"
+                (mapClick)="onMarkerClick(place)"
             >
             </map-marker>
         </ng-component>
     </google-map>
-    <img class="control time reset" src="../../../assets/map/icons/Vector.png" alt="" />
-    <img class="control filter water" src="../../../assets/map/icons/Vector.png" alt="" />
-    <img class="control filter smog" src="../../../assets/map/icons/Vector.png" alt="" />
-    <img class="control zoom-in" src="../../../assets/map/icons/+.png" alt="" />
-    <img class="control zoom-out" src="../../../assets/map/icons/+.png" alt="" />
-    <div class="right-bar">bbb</div>
+    <div class="control timetravel">
+        <mat-slider></mat-slider>
+    </div>
+    <img class="control time rewind" src="../../../assets/rewind.png" alt="" />
+    <img class="control filter water" src="../../../assets/water.png" alt="" (click)="setType('water')" />
+    <img class="control filter smog" src="../../../assets/air.png" alt="" (click)="setType('air')" />
+    <img class="control zoom-in" src="../../../assets/plus.png" alt="" />
+    <img class="control zoom-out" src="../../../assets/minus.png" alt="" />
+    <div class="right-bar desktop-only"></div>
+    <div class="place-details" *ngIf="popupOpen">
+        Adres: {{ popupData.position.lat() }}, {{ popupData.position.lng() }}<br />
+        {{ popupData.description }}
+    </div>
 </div>

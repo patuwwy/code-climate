@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { HttpService } from "../services/http.service";
-import { Ticket } from "../services/ticket";
+import { HttpService } from "../../services/http.service";
+import { Ticket } from "../../services/ticket";
 
 @Component({
     selector: "app-submit",
@@ -23,7 +23,7 @@ export class SubmitComponent implements OnInit {
     ];
 
     form = new FormGroup({
-        category: new FormControl(),
+        category: new FormControl("water"),
         tags: new FormControl([], Validators.required),
         photo: new FormControl(null, Validators.required),
         //name: new FormControl("", Validators.required),
@@ -31,6 +31,7 @@ export class SubmitComponent implements OnInit {
         //email: new FormControl(""),
         phone: new FormControl("", Validators.required),
         location: new FormControl("50.0421369,22.0028409"),
+        desciption: new FormControl(""),
     });
     agrees = [
         {
@@ -75,6 +76,7 @@ export class SubmitComponent implements OnInit {
             phone_number: formValue.phone,
             data_created: Date.now(),
             tags: formValue.tags.join(","),
+            category: formValue.category,
         };
 
         this.http.postTicket(ticket).subscribe((res) => {

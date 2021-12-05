@@ -6,4 +6,5 @@ export type Ticket = {
     data_created: number;
     description: string;
     tags: string;
+    category: string;
 };

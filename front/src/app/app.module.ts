@@ -15,13 +15,14 @@ import { LandingComponent } from "./components/landing/landing.component";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatCardModule } from "@angular/material/card";
 import { DescriptionComponent } from "./components/description/description.component";
-import { SubmitComponent } from "./submit/submit.component";
+import { SubmitComponent } from "./components/submit/submit.component";
 import { MatSelectModule } from "@angular/material/select";
 import { MatChipsModule } from "@angular/material/chips";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSliderModule } from "@angular/material/slider";
 @NgModule({
     declarations: [AppComponent, MapComponent, LoginComponent, LandingComponent, DescriptionComponent, SubmitComponent],
     imports: [
@@ -41,6 +42,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
         MatFormFieldModule,
         MatInputModule,
         MatCheckboxModule,
+        MatSliderModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

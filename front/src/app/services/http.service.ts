@@ -8,7 +8,7 @@ import { Ticket } from "./ticket";
 })
 export class HttpService {
     private url = "https://my-json-server.typicode.com/JSGund/XHR-Fetch-Request-JavaScript/posts";
-    private apiBaseUrl = "http://3.141.30.121:5000";
+    private apiBaseUrl = "http://3.141.30.121";
     private airlyKey = "LKjOK7u3sSj99rU116G8y7foyFV0F7Iq";
 
     constructor(private http: HttpClient) {}
@@ -18,10 +18,12 @@ export class HttpService {
     }
 
     getTickets() {
-        return this.http.get(`${this.apiBaseUrl}/tickets`);
+        return this.http.get(`${this.apiBaseUrl}`);
     }
 
     postTicket(ticket: Ticket) {
-        return this.http.post(`${this.apiBaseUrl}/ticket`, ticket);
+        return this.http.post(`${this.apiBaseUrl}`, ticket);
     }
+
+    getAirlyData(lat: number, lng: number) {}
 }

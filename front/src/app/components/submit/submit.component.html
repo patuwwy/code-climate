@@ -7,6 +7,7 @@
                 <mat-form-field> <input matInput formControlName="location" /></mat-form-field>
                 <img src="../../assets/target.png" />
             </div>
+            <!--
             <div class="row">
                 <mat-form-field appearance="fill">
                     <mat-label>Katergoria</mat-label>
@@ -18,6 +19,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+            -->
             Zaznacz możliwe okoliczności<br />
             <div class="row tm">
                 <mat-chip-list class="example-chip" #tagList multiple formControlName="tags">
@@ -35,7 +37,7 @@
             <div class="row tm">
                 <mat-form-field>
                     <mat-label>Opis problemu</mat-label>
-                    <textarea matInput></textarea>
+                    <textarea matInput formControlName="description"></textarea>
                 </mat-form-field>
             </div>
             <div class="add-file">+ Dodaj zdjęcie lub nagranie</div>
@@ -97,4 +99,3 @@
         <img src="../../assets/umbrella.png" alt="umbrella" />
     </div>
 </div>
-{{ form.value | json }}
